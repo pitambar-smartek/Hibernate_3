@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+
+<hibernate-mapping>
+	<class name="com.pitambar.dao.Employee" table="employee1">
+		<id name="empno" />
+		<property name="name" />
+		<property name="salary" />
+		<property name="deptno" />
+	</class>
+	<query name="avgsal">select avg(e.salary) from
+		Employee e</query>
+
+	<query name="groupsal">select e.deptno,avg(e.salary) from Employee e Group
+		by e.deptno</query>
+	<query name="ordersal">
+		       <![CDATA[ select e.name,e.salary from Employee e order by e.salary desc]]>
+	</query>
+</hibernate-mapping>

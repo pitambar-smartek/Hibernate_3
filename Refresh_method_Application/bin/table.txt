@@ -1,0 +1,2 @@
+create table employee(eid number(10) primary key, fname varchar2(10), lname varchar2(10),email varchar2(10))
+/

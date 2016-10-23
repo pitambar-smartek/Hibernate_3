@@ -1,0 +1,33 @@
+<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
+<%@ page isELIgnored="true" %>
+<html>
+<body bgcolor="yellow">
+<center>
+<c:if test="${requestScope.n != 0}">
+          <h1>Account Details</h1>
+		  <table border=1 cellpadding=3 cellspacing=0>
+		          <tr>
+				         <th align=right width=100>Accno</th>
+						 <th align=right width=100 >Name</th>
+						 <th align=right width=100 >Balance</th>
+				 </tr>
+
+				 <c:forEach items="${accounts}" var="acc">
+				 <tr>
+				         <td align=right width=100><c:out value="${acc.accno}" /></td>
+						  <td align=right width=100><c:out value="${acc.name}" /></td>
+						   <td align=right width=100><c:out value="${acc.balance}" /></td>
+			    </tr>
+				</c:forEach>
+		</table>
+		<a href="<c:url value="${requestScope.myUrl}"/> >nextPage</a>
+</c:if>
+		<c:if test="${requestScope.n==0}">
+		<h1>NO MORE ACCOUNTS PLEASE</h1>
+		</c:if>
+		
+	</center>
+	</body>
+	</html>
+
+

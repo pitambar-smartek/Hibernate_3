@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Aug 25, 2014 2:56:41 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.pitambar.persistence.Employee" table="EMPLOYEE_DETAILS">
+
+		<id name="employeeId" type="int">
+			<column name="EMPLOYEEID" />
+		</id>
+
+		<property name="name" type="java.lang.String">
+			<column name="NAME" />
+		</property>
+
+		<property name="departmentNumber" type="int">
+			<column name="DEPARTMENTNUMBER" />
+		</property>
+
+		<primitive-array name="phones" table="employee_phones" fetch="join">
+			<key column="EMPLOYEEID" />
+			<index column="position" type="integer" />
+			<element column="phone" type="integer" />
+		</primitive-array>
+
+		<array name="contacts" table="employee_contacts" fetch="join">
+			<key column="EMPLOYEEID" />
+			<index column="position" type="integer" />
+
+			<composite-element class="com.pitambar.persistence.Contact">
+				<property name="contactName" column="CONTACT_NAME" />
+				<property name="contactNumber" column="CONTACT_NUMBER" />
+				<property name="contactEmail" column="CONTACT_EMAIL" />
+			</composite-element>
+		</array>
+
+		<list name="locations" table="employee_locations" lazy="false" fetch="join">
+			<key column="EMPLOYEEID" />
+			<index column="position" type="integer" />
+			<element column="location" type="string" />
+		</list>
+
+		<set name="projects" table="employee_project" lazy="false" fetch="join">
+			<key column="EMPLOYEEID" />
+			<composite-element class="com.pitambar.persistence.Project">
+				<property name="projectName" type="string" />
+				<property name="clientName" type="string" />
+			</composite-element>
+
+		</set>
+
+
+		<bag name="logs" table="employee_logs" lazy="false" fetch="join">
+			<key column="EMPLOYEEID" />
+			<element column="logs" type="string" />
+		</bag>
+
+		<idbag name="logsBackUp" table="employee_logs_backup" lazy="false" fetch="join">
+			<collection-id type="long" column="logs_id">
+				<generator class="increment" />
+			</collection-id>
+			<key column="EMPLOYEEID" />
+			<element column="logs" type="string"></element>
+		</idbag>
+
+
+
+		<map name="tokens" table="employee_details_tokens" lazy="false" fetch="join">
+			<key column="EMPLOYEEID" />
+			<map-key column="token_name" type="string" />
+			<element column="token_value" type="string"></element>
+		</map>
+
+		<dynamic-component name="extras">
+			<property name="VEH_NUM" type="string" />
+			<property name="VEH_TYPE" type="string" />
+		</dynamic-component>
+
+		<map name="projMap" table="employee_project_details" lazy="false" fetch="join">
+			<key column="EMPLOYEEID" />
+			<map-key column="projectId" type="string" />
+
+			<composite-element class="com.pitambar.persistence.Project">
+				<property name="projectName" type="string" />
+				<property name="clientName" type="string" />
+			</composite-element>
+
+
+		</map>
+	</class>
+
+
+
+</hibernate-mapping>

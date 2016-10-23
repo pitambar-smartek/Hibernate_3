@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.pitambar.dao.AccountPlus" table="Accountplus">
+	         <id name="accountNo">
+			              <generator class="org.hibernate.id.SequenceGenerator">
+						           <param name="sequence">AccountPlus_seq</param>
+						  </generator>
+			</id>
+			<property name="location" />
+			<property name="type" />
+			<one-to-one name="account" class="com.pitambar.dao.Account" cascade="all" />
+
+	 </class>
+</hibernate-mapping>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-cascade="all">
+	<class name="com.pitambar.dao.Account">
+		<id name="accountNo">
+			<generator class="org.hibernate.id.SequenceGenerator">
+				<param name="sequence">MYACCOUNT_SEQUENCE</param>
+			</generator>
+		</id>
+		<property name="name" />
+		<property name="balance" />
+
+		<one-to-one name="accountPlus" class="com.pitambar.dao.AccountPlus"
+			cascade="save-update,delete" />
+	</class>
+</hibernate-mapping>

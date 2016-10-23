@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.pitambar.dao.Employee" table="employee1">
+	            <id name="empno" />				       
+				<property name="name"  />
+				<property name="deptno"  />	
+				<property name="salary" />
+
+				<component name="addr" >
+				                <property name="hno" />
+								<property name="street" />
+								<property name="city" />
+								<property name="pin" />
+			  </component>				
+		</class>
+</hibernate-mapping>

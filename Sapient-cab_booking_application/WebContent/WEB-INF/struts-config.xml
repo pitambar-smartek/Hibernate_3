@@ -1,0 +1,23 @@
+<!DOCTYPE struts-config PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+        "http://struts.apache.org/dtds/struts-config_1_3.dtd">
+<struts-config>
+   
+   <form-beans>
+             <form-bean type="com.sapient.userform.LoginForm" name="loginform" />			 
+</form-beans>
+
+<action-mappings>
+  <action path="/login" type="com.sapient.controller.LoginAction" name="loginform" >
+          <forward name="success" path="/frame.jsp" />
+            <forward name="failure"  path="/loginone.jsp" />
+			
+			<forward name="manager" path="/frame.jsp" />			
+</action> 
+
+ 
+
+</action-mappings>
+
+
+</struts-config>

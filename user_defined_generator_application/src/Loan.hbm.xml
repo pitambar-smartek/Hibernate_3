@@ -1,0 +1,12 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.pitambar.dao.Loan">
+ <id name="loan_id" >
+<generator class="com.pitambar.dao.LoanIdGenerator" />
+ </id>
+ <property name="name"/>
+<property name="lamount" />
+</class>
+</hibernate-mapping>

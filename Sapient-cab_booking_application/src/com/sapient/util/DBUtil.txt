@@ -1,0 +1,138 @@
+package com.sapient.util;
+
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+
+
+
+
+public class DBUtil {
+	
+	static {
+		try {
+			Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * This method establish the connection to MYSQL Database
+	 * 
+	 * @return Connection object
+	 * @throws SQLException 
+	 * @throws ProcessingException 
+	 * 
+	 */
+	public static Connection getConnection() throws SQLException  {
+		Connection con = null;
+		
+		   String database_path="";
+		   if(database_path.isEmpty()){
+		  // database_path=getDatabasePath();
+		   }
+		   database_path="C:/Users/Admin/hibernateApplication/Sapient-cab_booking_application/WebContent/cab_database.mdb";
+		   
+		final String database = "jdbc:odbc:Driver={Microsoft Access Driver (*.mdb)};DBQ="+database_path+";";
+                          
+		try {
+			
+			con = DriverManager.getConnection(database, "", "");
+			
+			
+		} catch (SQLException e) {
+
+		
+			throw e;
+		}
+		
+		return con;
+	}
+
+	/**
+	 * This method close the connection,preparedStatement,ResultSet object
+	 * 
+	 * @param Connection
+	 *            object
+	 * @param PreparedStatement
+	 *            object
+	 * @param ResultSet
+	 *            object
+	 * @return void
+	 * 
+	 */
+
+	public static void closeConnection(Connection con, PreparedStatement pst,
+			ResultSet rs)throws Exception {
+		
+		if (rs != null) {
+			try {
+				rs.close();
+			} catch (Exception e) {
+                 
+                  throw e;
+			}
+		}
+		if (pst != null) {
+			try {
+				pst.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		if (con != null) {
+			try {
+				con.close();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+
+			}
+		}
+		
+	}
+	
+	public static String getDatabasePath() {
+		InitialContext ic;
+		String databasepath="";
+		try {
+			ic = new InitialContext();
+			databasepath=(String) ic.lookup("java:comp/env/database");
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return databasepath;
+	}
+	public static void main(String[] args) throws Exception {
+		Connection con=getConnection();
+		PreparedStatement pst = null;
+		ResultSet resultSet = null;
+		String role = "";
+		System.out.println("the con="+con);
+		try{
+		pst = con
+				.prepareStatement("select user_name,password,role from user_login where user_name=? and password=?");
+
+		pst.setString(1, "nilanchalg");
+		pst.setString(2, "123456");
+		resultSet = pst.executeQuery();
+		if (resultSet.next()) {
+			System.out.println("ruteeee");
+			role = resultSet.getString("role");
+		}
+		System.out.println("the role="+role);
+		}finally{
+		closeConnection(con, pst, resultSet);
+		}
+	}
+}

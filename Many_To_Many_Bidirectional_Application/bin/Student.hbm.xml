@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.pitambar.dao.Student" table="shiksha_student">
+	            <id name="sno" >
+				      <generator class="increment"></generator>
+				</id>
+				<property name="sname"  />
+				<bag name="courseList" table="student_course" cascade="all">
+				        <key column="student_no"  ></key>
+						<many-to-many column="course_no" class="com.pitambar.dao.Course" />
+				</bag>				
+		</class>
+</hibernate-mapping>

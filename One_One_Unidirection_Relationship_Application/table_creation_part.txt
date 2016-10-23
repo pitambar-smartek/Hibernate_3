@@ -1,0 +1,17 @@
+create table account(accountNo number,name varchar2(20),balance number(5,2));
+
+
+create table accountplus(accountNo number,location varchar2(20),type varchar2(20));
+
+
+create sequence MYACCOUNT_SEQUENCE;
+
+create sequence AccountPlus_seq;
+
+
+
+
+
+
+
+

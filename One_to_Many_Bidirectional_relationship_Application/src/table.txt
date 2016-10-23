@@ -1,0 +1,2 @@
+create table employee1(eid number primary key,ename varchar2(20),esal number,emp_deptno number references department(dept))
+/

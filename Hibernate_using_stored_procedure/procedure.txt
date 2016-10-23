@@ -1,0 +1,4 @@
+create or replace procedure changebal(acno number,newbal number) as
+begin
+update account set balance:=newbal where accountno:=acno;
+end;

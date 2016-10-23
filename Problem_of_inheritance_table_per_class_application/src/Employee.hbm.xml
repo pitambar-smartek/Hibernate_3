@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.pitambar.dao.Employee" table="my_emp" >
+	            <id name="empno" >
+				     <generator class="increment" ></generator>
+				 </id>
+				 <property name="name"  />
+				
+				<joined-subclass name="com.pitambar.dao.HourlyEmployee" table="HourlyEmployee">
+				             <key column="empno" />
+							 <property name="costPerHour" column="rate_per_hour" />
+							 <property name="workedHours" column="worked_hours" />
+				</joined-subclass>
+
+				<joined-subclass name="com.pitambar.dao.SalariedEmployee" table="salariedEmployee">
+				            <key column="empno" />
+				             <property name="salary" column="salary"  />							
+				</joined-subclass>
+							
+		</class>
+</hibernate-mapping>

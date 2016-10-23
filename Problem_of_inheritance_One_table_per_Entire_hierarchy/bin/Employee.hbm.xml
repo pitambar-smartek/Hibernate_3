@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+     <class name="com.pitambar.dao.Employee" table="employee" discriminator-value="emp">
+	            <id name="empno" >
+				     <generator class="increment" ></generator>
+				 </id>
+				 <discriminator column="EMP_DESC" />
+				<property name="name"  column="name"/>
+				
+				<subclass name="com.pitambar.dao.HourlyEmployee" discriminator-value="hourly">
+				             <property name="workedHours" column="worked_hours" />
+							 <property name="costPerHour" column="rate_per_hour" />
+				</subclass>
+
+				<subclass name="com.pitambar.dao.SalariedEmployee" discriminator-value="salaried">
+				             <property name="salary"  />							
+				</subclass>
+							
+		</class>
+</hibernate-mapping>

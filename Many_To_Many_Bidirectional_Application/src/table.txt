@@ -1,0 +1,40 @@
+create table shiksha_student(sno number primary key,sname varchar2(20));
+                                                 
+insert into shiksha_student values(101,'David')  ;
+insert into shiksha_student values(102,'Rahim')  ;
+                                                 
+insert into shiksha_student values(103,'Rama')   ;
+                                                 
+ insert into shiksha_student values(104,'Satish');
+
+
+ create table shiksha_course(cno number primary key,cname varchar2(20));
+
+ insert into shiksha_course values(2001,'JAVA');
+                                               
+ insert into shiksha_course values(2002,'.NET');
+                                               
+ insert into shiksha_course values(2003,'PHP') ;
+                                               
+ insert into shiksha_course values(2004,'GATE');
+
+
+create table student_course(student_no number references shiksha_student(sno),course_no number references shiksha_course(cno));
+
+insert into student_course values(101,2001);
+
+ insert into student_course values(101,2003);
+
+insert into student_course values(101,2004);
+
+insert into student_course values(102,2002);
+
+ insert into student_course values(103,2002);
+
+insert into student_course values(104,2002) ;  
+
+select * from shiksha_student;
+
+
+/
+

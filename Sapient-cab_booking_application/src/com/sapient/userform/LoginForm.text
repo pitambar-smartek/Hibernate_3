@@ -1,0 +1,33 @@
+package com.sapient.userform;
+
+
+
+import org.apache.struts.action.ActionForm;
+
+/**
+ * 
+ *This class stores the client data in  setter method and 
+ */
+public class LoginForm extends ActionForm {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	String siUserName;
+	String siPassword;
+	public String getSiUserName() {
+		return siUserName;
+	}
+	public void setSiUserName(String siUserName) {
+		this.siUserName = siUserName;
+	}
+	public String getSiPassword() {
+		return siPassword;
+	}
+	public void setSiPassword(String siPassword) {
+		this.siPassword = siPassword;
+	}
+
+	
+}

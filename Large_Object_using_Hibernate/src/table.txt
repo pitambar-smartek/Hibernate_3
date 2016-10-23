@@ -1,0 +1,2 @@
+create table employeeprofile(empid number(4),ename varchar2(10),empresume clob,empphoto blob)
+/

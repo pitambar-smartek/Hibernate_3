@@ -1,0 +1,6 @@
+create table hourlyemployee(empno number(5),name varchar2(12),worked_hours number(3),rate_per_hour number(9,2))
+
+
+create table salariedemployee(empno number(5),name varchar2(12),salary number(9,2))
+/
+

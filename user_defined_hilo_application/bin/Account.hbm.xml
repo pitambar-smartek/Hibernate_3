@@ -1,0 +1,16 @@
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+ <class name="com.pitambar.dao.Account" table="MYACCOUNT" >
+ <id name="accno" column="ANO" >
+ <generator class="org.hibernate.id.TableHiLoGenerator" >
+ <param name="table">myaccount</param>
+ <param name="column">ano</param>
+ </generator>
+<!--<generator class="org.hibernate.id.SequenceGenerator" />-->
+ </id>
+ <property name="name" column="NM" />
+<property name="balance" column="BAL" />
+</class>
+</hibernate-mapping>
